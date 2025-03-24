@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Popular Movies</title>
+    <title>Popular Movies | Movie Recommendation System</title>
+    <meta name="description" content="Explore the most popular movies with our Django-powered movie recommendation system. Powered by the TMDb API, discover personalized movie suggestions.">
+	{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <h1>Popular Movies</h1>
-    <ul>
-        {% for movie in movies %}
-            <li>
-                <a href="{% url 'movie_detail' movie.id %}">
-                    <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" style="width:150px; height:auto;">
-                    <p>{{ movie.title }}</p>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+	<div class="movie-list">
+		{% for movie in movies %}
+			<div class="movie-item">
+				<a href="{% url 'movie_detail' movie.id %}">
+					<img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+					<p>{{ movie.title }}</p>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
 </body>
 </html>
